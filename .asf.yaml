@@ -1,0 +1,47 @@
+# SPDX-License-Identifier: Apache-2.0
+# SPDX-FileCopyrightText: See the NOTICE file distributed with this work for additional information regarding copyright ownership
+# SPDX-FileContributor: Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements
+
+# This file controls the settings of this repository
+#
+# See more details at
+# https://cwiki.apache.org/confluence/display/INFRA/Git+-+.asf.yaml+features
+
+notifications:
+  commits: commits@datafusion.apache.org
+  issues: github@datafusion.apache.org
+  pullrequests: github@datafusion.apache.org
+  jira_options: link label worklog
+
+github:
+  description: "Apache Spark-compatible expressions for Apache DataFusion"
+  homepage: https://datafusion.apache.org/
+  labels:
+    - arrow
+    - datafusion
+    - query-engine
+    - rust
+    - spark
+    - sql
+  enabled_merge_buttons:
+    squash: true
+    squash_commit_message: PR_TITLE_AND_DESC
+    merge: false
+    rebase: false
+  features:
+    issues: true
+  protected_branches:
+    main:
+      required_pull_request_reviews:
+        required_approving_review_count: 1
+  pull_requests:
+    # enable updating head branches of pull requests
+    allow_update_branch: true
+    allow_auto_merge: true
+    # auto-delete head branches after being merged
+    del_branch_on_merge: true
+    # Limit open pull requests per user without write access, as in
+    # apache/datafusion.
+    creation_cap:
+      enabled: true
+      max_open_pull_requests: 3
